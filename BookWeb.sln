@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWeb", "BookWeb\BookWeb.csproj", "{517F02A7-4C6E-4F86-918F-DA294E73227F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb", "BookWeb\BookWeb.csproj", "{517F02A7-4C6E-4F86-918F-DA294E73227F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWeb.DataAccess", "BookWeb.DataAccess\BookWeb.DataAccess.csproj", "{DCCBF0FE-C049-4B61-B1D3-25A60739873A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.DataAccess", "BookWeb.DataAccess\BookWeb.DataAccess.csproj", "{DCCBF0FE-C049-4B61-B1D3-25A60739873A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWep.Models", "BookWep.Models\BookWep.Models.csproj", "{D4FCD3C1-CA45-4D3A-B9B3-9A2B0F805D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.Models", "BookWep.Models\BookWeb.Models.csproj", "{D4FCD3C1-CA45-4D3A-B9B3-9A2B0F805D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWeb.Utility", "BookWeb.Utility\BookWeb.Utility.csproj", "{6CD54B77-195B-427F-A11A-D14114C8E774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.Utility", "BookWeb.Utility\BookWeb.Utility.csproj", "{6CD54B77-195B-427F-A11A-D14114C8E774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

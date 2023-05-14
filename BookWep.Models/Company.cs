@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookWep.Models
+namespace BookWeb.Models
 {
     public class Company
-    {
-        public int Id { get; set; }
+    {        
+        public int? Id { get; set; }
 
         [Required]
         public string Name { get; set; }
