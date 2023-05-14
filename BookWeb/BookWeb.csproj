@@ -23,9 +23,4 @@
     <ProjectReference Include="..\BookWep.Models\BookWeb.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Views\" />
-  </ItemGroup>
-
 </Project>
