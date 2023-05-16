@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb", "BookWeb\BookWeb.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.DataAccess", "BookWeb.DataAccess\BookWeb.DataAccess.csproj", "{DCCBF0FE-C049-4B61-B1D3-25A60739873A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.Models", "BookWep.Models\BookWeb.Models.csproj", "{D4FCD3C1-CA45-4D3A-B9B3-9A2B0F805D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.Models", "BookWeb.Models\BookWeb.Models.csproj", "{D4FCD3C1-CA45-4D3A-B9B3-9A2B0F805D93}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWeb.Utility", "BookWeb.Utility\BookWeb.Utility.csproj", "{6CD54B77-195B-427F-A11A-D14114C8E774}"
 EndProject

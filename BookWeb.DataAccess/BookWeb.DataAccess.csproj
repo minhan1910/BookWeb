@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookWep.Models\BookWeb.Models.csproj" />
+    <ProjectReference Include="..\BookWeb.Models\BookWeb.Models.csproj" />
   </ItemGroup>
 
 </Project>
