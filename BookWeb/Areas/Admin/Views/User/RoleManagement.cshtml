@@ -1,0 +1,110 @@
+﻿@model UserVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Manage User Role</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <div class="border p-3">
+
+                <input asp-for="UserID" hidden />     
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="border p-3">
+                            <div class="form-floating py-2 col-12">
+                                <input asp-for="ApplicationUser.Name" class="form-control border-0 shadow" />
+                                <label asp-for="ApplicationUser.Name" class="ms-2 text-black fw-bold"></label>
+                                <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating py-2 col-12">
+                                @{
+                                    var companyVisible = "display:none;";
+                                    
+                                    var roleBasedUserId = Model.Roles?.FirstOrDefault(r => r.Id == Model.RoleId);
+                                    
+                                    if (roleBasedUserId != null && roleBasedUserId.Name == SD.Role_Company)
+                                    {
+                                        companyVisible = "display:block;";
+                                    }
+                                }
+                                @*Role*@
+                                <select asp-for="RoleId" class="form-select">
+                                    @foreach (var role in Model.Roles)
+                                    {
+                                        if (role.Id == Model.RoleId)
+                                        {
+                                            <option selected value="@role.Id">@role.Name</option>
+                                        } else
+                                        {
+                                            <option value="@role.Id">@role.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-floating py-2 col-12">
+                                @*Company*@
+                                <select asp-for="CompanyId" class="form-select" style="@companyVisible">
+                                    
+                                    @foreach (var company in Model.Companies)
+                                    {
+                                        if (company.Id.ToString() == Model.CompanyId)
+                                        {
+                                            <option selected value="@company.Id">@company.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@company.Id">@company.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="row pt-2">
+                                <div class="col-6 col-md-3">
+                                    <button asp-controller="User" asp-action="RoleManagement" type="submit" class="btn btn-primary form-control">
+                                       Update
+                                    </button>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <a asp-controller="User" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                                        Back to List
+                                    </a>
+                                </div>                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('#RoleId').change(function () {
+                var selection = $('#RoleId Option:Selected').text();
+
+                if (selection == 'Company') {
+                    $('#CompanyId').show();
+                } else {
+                    $('#CompanyId').hide();
+                }
+            });
+        });
+    </script>
+}
