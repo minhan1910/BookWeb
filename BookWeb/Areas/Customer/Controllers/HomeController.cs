@@ -27,6 +27,68 @@ namespace BookWeb.Areas.Customer.Controllers
             return View(productList);
         }
 
+        public IActionResult Details(int productId)
+        {
+            Product? product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category");
+
+            if (product == null)
+            {
+                return BadRequest();
+            }
+
+            if (product.ImageUrl != null)
+            {
+                ViewBag.ProductUrl = FileHelper.NormalizeFilePathToWebRootPath(product.ImageUrl);
+            }
+
+            ShoppingCart cart = new ShoppingCart()
+            {
+                Product = product,
+                Count = 1,
+                ProductId = productId
+            };
+
+            return View(cart);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            shoppingCart.ApplicationUserId = userId;
+
+            ShoppingCart? cartFromDb = _unitOfWork.ShoppingCart.Get(x => x.ApplicationUserId == userId &&
+                                                             x.ProductId == shoppingCart.ProductId);
+
+            if (cartFromDb != null)
+            {
+                // update
+                cartFromDb.Count += shoppingCart.Count;
+                _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
+
+                TempData["success"] = "Book updated successfully";
+            }
+            else
+            {
+                // add
+                _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+
+                // For updating the number of product in navbar cart
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.ShoppingCart.GetAll(x => x.ApplicationUserId == userId).Count());
+
+                TempData["success"] = "Book added successfully";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Privacy()
         {
             return View();
